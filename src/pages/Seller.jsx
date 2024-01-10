@@ -2,10 +2,10 @@ import { useSeller } from '../hooks/useSeller';
 import { Link } from 'react-router-dom';
 import Popup from '../components/Popup';
 import SellerProduct from '../components/SellerProduct';
-import SellerOrder from '../components/SellerOrder';
 import usePopup from '../hooks/usePopup';
 import SellerProductForm from '../components/SellerProductForm';
 import fetchWithTokenRefresh from '../api/fetchWithTokenRefresh';
+import BlueButton from '../components/BlueButton';
 const Seller = () => {
   const { isAuthenticated, SellerProducts } = useSeller();
 
@@ -89,7 +89,12 @@ const Seller = () => {
     <div className=" p-36 pt-8  bg-gray-100">
       {SellerProducts.length > 0 ? (
         <div>
-          <h2 className="text-2xl font-semibold mb-2">Your Products</h2>
+          <div className="flex justify-between mb-2 items-center">
+            <h2 className="text-2xl font-semibold ">Your Products</h2>
+            <Link to="/sellerorders">
+              <BlueButton text="Your Orders" />
+            </Link>
+          </div>
           <ul className="space-y-2">
             {SellerProducts.map((product) => (
               <SellerProduct key={product.id} product={product} />
@@ -106,9 +111,6 @@ const Seller = () => {
           Add More Product
         </h2>
         <SellerProductForm handleProductSubmit={handleProductSubmit} />
-      </div>
-      <div className=" bg-gray-100 mt-8">
-        <SellerOrder />
       </div>
       {isPopupOpen && (
         <Popup

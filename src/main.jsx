@@ -12,8 +12,8 @@ import Login from './pages/Login';
 const Signup = lazy(() => import('./pages/Signup'));
 // import Signup from './pages/Signup';
 import VerifyEmail from './pages/VerifyEmail';
-// const Cart=lazy(()=>(import('./pages/Cart')));
-import Cart from './pages/Cart';
+const Cart = lazy(() => import('./pages/Cart'));
+// import Cart from './pages/Cart';
 const Checkout = lazy(() => import('./pages/Checkout'));
 // import Checkout from './pages/Checkout';
 const SellerRegister = lazy(() => import('./pages/SellerRegister'));
@@ -22,7 +22,7 @@ const SellerLogin = lazy(() => import('./pages/SellerLogin'));
 // import SellerLogin from './pages/SellerLogin';
 const Seller = lazy(() => import('./pages/Seller'));
 // import Seller from './pages/Seller';
-import './index.css';
+const SellerOrdersUi = lazy(() => import('./pages/SellerOrdersUi'));
 const AdminLogin = lazy(() => import('./pages/AdminLogin'));
 // import AdminLogin from './pages/AdminLogin';
 const AdminUi = lazy(() => import('./pages/AdminUi'));
@@ -65,9 +65,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                       element={<SellerRegister />}
                     />
                     <Route path="/sellerLogin" element={<SellerLogin />} />
+                    <Route path="/seller" element={<Seller />} />
+                    <Route path="/sellerorders" element={<SellerOrdersUi />} />
                     <Route path="/admin" element={<AdminLogin />} />
                     <Route path="/adminui" element={<AdminUi />} />
-                    <Route path="/seller" element={<Seller />} />
                     <Route path="/orders" element={<Orders />} />
                     <Route path="/transporter" element={<Transporter />} />
                   </Routes>

@@ -4,9 +4,16 @@ import { useAuth } from '../hooks/useAuth';
 import CartItem from '../components/CartItem';
 import { ArrowRightIcon } from '@radix-ui/react-icons';
 import fetchWithTokenRefresh from '../api/fetchWithTokenRefresh';
+import { useEffect } from 'react';
 function Cart() {
   const { isAuthenticated } = useAuth();
-  const { CartItems, total, AddProduct, RemoveProduct } = useCart();
+  const { CartItems, total, AddProduct, RemoveProduct, cartFullGet } =
+    useCart();
+  useEffect(() => {
+    if (isAuthenticated) {
+      cartFullGet();
+    }
+  }, []);
   const handleProductAdd = async (item) => {
     if (!isAuthenticated) return;
     const response = await fetchWithTokenRefresh(

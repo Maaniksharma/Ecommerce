@@ -23,7 +23,7 @@ export function CartProvider({ children }) {
       CartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
     );
   }, [CartItems]);
-  async function cartGet() {
+  async function cartCountGet() {
     try {
       const data = await fetchWithTokenRefresh(
         'token',
@@ -31,14 +31,21 @@ export function CartProvider({ children }) {
       );
       setProductCount(data.count);
       localStorage.setItem('ProductCount', data.count);
-      const data2 = await fetchWithTokenRefresh(
+    } catch (error) {
+      console.error('Failed to get cart count:', error);
+    }
+  }
+
+  async function cartFullGet() {
+    try {
+      const data = await fetchWithTokenRefresh(
         'token',
         `${import.meta.env.VITE_SERVERURL}/user/cartget`
       );
-      setCartItems(data2?.cart);
-      localStorage.setItem('Cartitems', data2?.cart);
+      setCartItems(data?.cart);
+      localStorage.setItem('Cartitems', JSON.stringify(data?.cart));
     } catch (error) {
-      console.error('Failed to get cart:', error);
+      console.error('Failed to get full cart:', error);
     }
   }
   const AddProduct = (product) => {
@@ -106,7 +113,8 @@ export function CartProvider({ children }) {
         CartItems,
         ProductCount,
         total,
-        cartGet,
+        cartCountGet,
+        cartFullGet,
         AddProduct,
         RemoveProduct,
         ClearCart,

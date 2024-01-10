@@ -37,7 +37,7 @@ const SellerLoginPage = () => {
       } else {
         await sellerContext.login(res);
         await sellerContext.fetchProducts();
-        await sellerContext.fetchOrders();
+        // await sellerContext.fetchOrders();
         navigate('/seller');
       }
     } catch (error) {

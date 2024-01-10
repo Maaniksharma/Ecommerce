@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import useFetchProducts from '../hooks/useFetchProducts';
 import Product from '../components/Product';
+import BlueButton from '../components/BlueButton';
 import Loading from '../components/Loading';
 import Loader from '../components/Loader';
 import { useAuth } from '../hooks/useAuth';
@@ -31,10 +32,6 @@ const HomePage = () => {
 
   if (isLoading) return <Loading />;
 
-  const loadMore = () => {
-    setPage((prevPage) => prevPage + 1);
-  };
-
   const handleOrder = async () => {
     if (isOrdersfetching) return;
     setIsOrdersFetching(true);
@@ -47,12 +44,11 @@ const HomePage = () => {
       <div className="flex items-center justify-between ">
         <h1 className="text-3xl font-bold mb-5">Featured Products</h1>
         {isAuthenticated && (
-          <button
-            onClick={handleOrder}
-            className="bg-blue-500 hover:bg-blue-700 mb-4 text-white font-bold py-2 px-4 rounded"
-          >
-            {isOrdersfetching ? <Loader size={24} /> : 'My Orders'}
-          </button>
+          <BlueButton
+            handler={handleOrder}
+            loading={isOrdersfetching}
+            text="My Orders"
+          />
         )}
       </div>
       <div className="md:grid md:grid-cols-4 gap-4">

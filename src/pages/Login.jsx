@@ -9,7 +9,7 @@ import { useCart } from '../hooks/useCart';
 
 const LoginPage = () => {
   const { isPopupOpen, popupInfo, ShowPopup, closePopup } = usePopup();
-  const { cartGet } = useCart();
+  const { cartCountGet } = useCart();
   const [isLoading, setIsLoading] = useState(false);
   const userContext = useAuth();
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ const LoginPage = () => {
       else ShowPopup('Error', 'Something went wrong');
     } else {
       userContext.login(res);
-      cartGet();
+      cartCountGet();
     }
     setIsLoading(false);
   };
