@@ -24,7 +24,7 @@ export default async (req, res) => {
         email: seller.email,
       };
       const token = jwt.sign({ email }, process.env.secretkey, {
-        expiresIn: '10s',
+        expiresIn: '10m',
       });
       const refreshToken = jwt.sign({ email }, process.env.secretkey, {
         expiresIn: '30m',
