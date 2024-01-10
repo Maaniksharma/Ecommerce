@@ -69,7 +69,7 @@ function Cart() {
           </div>
         </div>
       ) : (
-        <p>Your cart is empty.</p>
+        <p>Your cart is either empty or loading.</p>
       )}
     </div>
   );
