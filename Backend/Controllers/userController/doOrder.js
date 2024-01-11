@@ -1,5 +1,5 @@
 import { connection } from '../../configs/connectionConfig.js';
-
+import getCurrentDate from '../../utils/getCurrentDate.js';
 export default async (req, res) => {
   try {
     const userEmail = req.email;
@@ -17,8 +17,14 @@ export default async (req, res) => {
 
         // Insert into orders table
         await connection.query(
-          'INSERT INTO orders (productId, userEmail, quantity, sellerEmail) VALUES (?, ?, ?, ?)',
-          [product.id, userEmail, product.quantity, sellerEmail]
+          'INSERT INTO orders (productId, userEmail, quantity, sellerEmail,Created_at) VALUES (?, ?, ?, ?,?)',
+          [
+            product.id,
+            userEmail,
+            product.quantity,
+            sellerEmail,
+            getCurrentDate(),
+          ]
         );
       }
     }

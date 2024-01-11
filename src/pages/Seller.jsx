@@ -6,6 +6,7 @@ import usePopup from '../hooks/usePopup';
 import SellerProductForm from '../components/SellerProductForm';
 import fetchWithTokenRefresh from '../api/fetchWithTokenRefresh';
 import BlueButton from '../components/BlueButton';
+import SellerDashboard from '../components/SellerDashboard';
 const Seller = () => {
   const { isAuthenticated, SellerProducts } = useSeller();
 
@@ -87,6 +88,8 @@ const Seller = () => {
   }
   return (
     <div className=" p-36 pt-8  bg-gray-100">
+      <h1 className="text-4xl font-semibold text-center">Dashboard</h1>
+      <SellerDashboard />
       {SellerProducts.length > 0 ? (
         <div>
           <div className="flex justify-between mb-2 items-center">

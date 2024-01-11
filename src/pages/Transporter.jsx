@@ -20,7 +20,10 @@ const Transporter = () => {
     const response = await fetch(
       `http://localhost:3000/transporter/dispatch?orderId=${OrderId}`
     );
-    if (response.ok) {
+    if (response.error) {
+      ShowPopup('Error', 'Something went wrong');
+      return;
+    } else {
       ShowPopup('Success', 'Order gone for Dispatched Successfully');
       const temp = products.map((product) => {
         if (product.orderId === OrderId) {
@@ -31,7 +34,6 @@ const Transporter = () => {
       setProducts(temp);
       return;
     }
-    ShowPopup('Error', 'Something went wrong');
   };
   const MarkDelivered = async (OrderId) => {
     const response = await fetch(
