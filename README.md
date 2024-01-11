@@ -43,7 +43,3 @@ To run this project locally:
    cd backend
    node main.js
    ```
-
-```
-
-```
