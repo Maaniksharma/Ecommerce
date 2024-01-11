@@ -1,8 +1,49 @@
-# React + Vite
+# Ecommerce Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack Ecommerce application utilizing SQL, Node.js, Express, and React. The project implements various API concepts including Context API, lazy loading, useQuery, routing, pagination, JWT token-based authentication, and refresh tokens.
 
-Currently, two official plugins are available:
+## Project Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project follows an MVC architecture and is currently deployed with the database hosted on DigitalOcean. The application revolves around four primary roles:
+
+1. **User**: Users can login, sign up, manage their cart (add/remove items), make payments, and track orders by status.
+
+2. **Seller**: Sellers have the ability to login, sign up, list their products pending admin approval, and check the order status. They are responsible for shipping products to transporters.
+
+3. **Transporter**: Transporters receive orders from sellers and handle the transportation of products. They can update the order status to dispatched and delivered.
+
+4. **Admin**: Admins manage seller registration requests, approve/deny products, and oversee the entire system.
+
+All data in this project is synchronized across JavaScript, localStorage, and the database.
+
+## Features
+
+- User authentication (JWT token-based)
+- Role-based access control
+- Cart management
+- Order tracking by status
+- Product listing and approval system
+- Transporter order handling
+- Admin authorization for user and product management
+
+## Installation
+
+To run this project locally:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/Ecommerce.git
+   ```
+2. Run frontend
+   ```bash
+   npm run dev
+   ```
+3. Run backend
+   ```bash
+   cd backend
+   node main.js
+   ```
+
+```
+
+```
