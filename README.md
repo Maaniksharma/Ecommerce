@@ -32,13 +32,17 @@ To run this project locally:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/Ecommerce.git
+   git clone https://github.com/maaniksharma/Ecommerce.git
    ```
-2. Run frontend
+2. Install Dependencies:
+   ```bash
+   npm install
+   ```
+3. Run frontend
    ```bash
    npm run dev
    ```
-3. Run backend
+4. Run backend
    ```bash
    cd backend
    node main.js
